@@ -1,0 +1,34 @@
+% Shared typesetting; \\input from a project two directories under the root.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[letterpaper,margin=1.12in,headheight=14pt]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\definecolor{ink}{HTML}{172535}
+\definecolor{linkblue}{HTML}{1B527D}
+\definecolor{muted}{HTML}{536271}
+\usepackage[backend=biber,style=authoryear,sorting=nyt,maxbibnames=99,doi=true,url=true,isbn=false,backref=true]{biblatex}
+\addbibresource{../../bibliography/references.bib}
+\usepackage[pdfusetitle,colorlinks=true,linkcolor=ink,citecolor=linkblue,urlcolor=linkblue]{hyperref}
+\usepackage{bookmark}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textsf{RESEARCH COMPENDIUM}}
+\fancyhead[R]{\small\textsf{\ReviewCode}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setcounter{tocdepth}{2}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newcommand{\ReviewStatusText}[1]{\par\noindent\textcolor{muted}{\small\textsf{#1}}\par\medskip}
+\input{../../tex/macros.tex}

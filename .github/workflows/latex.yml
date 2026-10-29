@@ -1,0 +1,53 @@
+name: LaTeX reviews
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.tex'
+      - '**/*.bib'
+      - 'scripts/**'
+      - '.github/workflows/latex.yml'
+      - 'Makefile'
+  pull_request:
+    paths:
+      - '**/*.tex'
+      - '**/*.bib'
+      - 'scripts/**'
+      - '.github/workflows/latex.yml'
+      - 'Makefile'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      reviews: ${{ steps.matrix.outputs.reviews }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Discover review sources
+        id: matrix
+        run: echo "reviews=$(python3 scripts/list_reviews.py)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: discover
+    name: ${{ matrix.review }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        review: ${{ fromJson(needs.discover.outputs.reviews) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile PDF (BibLaTeX/Biber)
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: reviews/${{ matrix.review }}
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
+      - name: Archive PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-${{ matrix.review }}
+          path: reviews/${{ matrix.review }}/main.pdf
+          if-no-files-found: error

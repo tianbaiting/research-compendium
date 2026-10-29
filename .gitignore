@@ -1,0 +1,31 @@
+# LaTeX build products
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.pdf
+*.nav
+*.snm
+*.vrb
+# Editor / operating system
+.DS_Store
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+__pycache__/
+# Never accidentally add article full texts or sensitive data
+papers/
+private/
+secrets/
+.env

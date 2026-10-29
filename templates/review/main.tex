@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+\newcommand{\ReviewCode}{DRAFT}
+\input{../../tex/preamble.tex}
+\title{\bfseries Review Title\\[3pt]\large A Precise Research Question}
+\author{Research Compendium \;\textbar\; Working review}
+\date{\today}
+\begin{document}
+\maketitle
+\ReviewStatusText{STATUS: OUTLINE \quad\textbullet\quad Do not cite as a completed review}
+\begin{abstract}
+State the physical question, the set of admissible observations, the hypothesis space, and the limits of the present review. Avoid unsupported quantitative claims.
+\end{abstract}
+\tableofcontents
+\clearpage
+\section{Question and scope}\label{sec:question}
+Define the physical problem and the exact quantities to be inferred.
+\section{Conventions}\label{sec:conventions}
+Define kinematics, normalization, and signs before using results.
+\section{Evidence}\label{sec:evidence}
+List experimentally observed quantities and their sources, distinguishing direct from secondary analysis.
+\section{Models and interpretation}\label{sec:theory}
+Record dynamical assumptions and what the model can or cannot infer.
+\section{Open problems}\label{sec:open}
+Identify a testable next measurement or calculation.
+\section*{Revision log}
+\addcontentsline{toc}{section}{Revision log}
+\textbf{\today}: initial outline.
+% Cite authoritative literature with \textcite{verified-key} as you write.
+\printbibliography[heading=bibintoc,title={References}]
+\end{document}
